@@ -1,22 +1,12 @@
 <?php
 use Migrations\AbstractMigration;
 
-class CroogoDashboardsInitialMigration extends AbstractMigration
+class DashboardsInitialMigration extends AbstractMigration
 {
-
-    public $autoId = false;
-
     public function up()
     {
-        $table = $this->table('dashboards');
-        $table
-            ->addColumn('id', 'integer', [
-                'autoIncrement' => true,
-                'default' => null,
-                'limit' => 20,
-                'null' => false,
-            ])
-            ->addPrimaryKey(['id'])
+
+        $this->table('dashboards')
             ->addColumn('alias', 'string', [
                 'default' => '',
                 'limit' => 50,
@@ -38,12 +28,12 @@ class CroogoDashboardsInitialMigration extends AbstractMigration
                 'null' => false,
             ])
             ->addColumn('collapsed', 'boolean', [
-                'default' => 0,
+                'default' => false,
                 'limit' => null,
                 'null' => false,
             ])
             ->addColumn('status', 'boolean', [
-                'default' => 1,
+                'default' => true,
                 'limit' => null,
                 'null' => false,
             ])
@@ -58,7 +48,6 @@ class CroogoDashboardsInitialMigration extends AbstractMigration
                 'null' => false,
             ])
             ->create();
-
     }
 
     public function down()
